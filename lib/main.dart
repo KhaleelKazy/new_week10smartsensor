@@ -26,7 +26,9 @@ Future<void> main() async {
   print(metadata);
   print('Initialization complete. Proceeding...\n');
 
-  await for (final temperature in temperatureStream()) {
+  final controller = StreamController<double>();
+
+  controller.stream.listen((temperature) {
     if (temperature > 35.0) {
       final fahrenheit = temperature * 1.8 + 32;
 
@@ -41,7 +43,13 @@ Future<void> main() async {
             '${temperature.toStringAsFixed(1)}°C',
       );
     }
+  });
+
+  await for (final reading in temperatureStream()) {
+    controller.add(reading);
   }
+
+  await controller.close();
 
   print('\nTemperature monitoring complete.');
 }
