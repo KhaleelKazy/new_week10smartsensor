@@ -23,3 +23,8 @@ The program behaved by the program sending a sensor malfunction instead of a tem
 onError callback handled the error, allowing the stream to continue 
 processing the fifth reading and exit cleanly.try-catch handles thrown exceptions, while onError handles
 error events by a stream.
+
+Journal5
+During final testing, I checked that the stream handled the simulated sensor malfunction without crashing.
+I was making sure the stream listener was set up before sending events. 
+I also confirmed that the controller was closed after all readings were dispatched.
