@@ -17,3 +17,9 @@ I made a StreamController<double> to act between the temperature generator
 and the code that processes readings. a controller created with async*, produces values according to its own logic using yield. 
 Consumers can listen to those values directly.Setting up the listener first ensures that the stream has a subscriber ready to receive 
 and process incoming readings as they are added.
+
+Journal4
+The program behaved by the program sending a sensor malfunction instead of a temperature reading
+onError callback handled the error, allowing the stream to continue 
+processing the fifth reading and exit cleanly.try-catch handles thrown exceptions, while onError handles
+error events by a stream.
